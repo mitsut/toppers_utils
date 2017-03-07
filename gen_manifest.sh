@@ -104,14 +104,16 @@ done
 
 # 以下，実行本体
 
-#既にMANIFESTが存在する場合はMANIFEST.NEWで作成する
+#既にMANIFESTが存在する場合は既存のファイルをMANIFEST.OLDに置き換える
 if [ -e $GENERATE_FILE ]; then
-GENERATE_FILE="MANIFEST.NEW"
-	#MANIFEST.NEWがあった場合は削除
-	if [ -e $GENERATE_FILE ]; then
-	rm -f $GENERATE_FILE
-	fi
+mv $GENERATE_FILE $GENERATE_FILE.OLD
 fi
+#GENERATE_FILE="MANIFEST.NEW"
+#	#MANIFEST.NEWがあった場合は削除
+#	if [ -e $GENERATE_FILE ]; then
+#	rm -f $GENERATE_FILE
+#	fi
+#fi
 
 #デフォルトの情報出力
 echo -e "PACKAGE " >> $GENERATE_FILE
@@ -127,3 +129,5 @@ fi
 #リスト結果の文字列の整形
 sed -i -e "s/^.\///" $GENERATE_FILE
 sed -i -e "/^.svn/d" $GENERATE_FILE
+sed -i -e "/^MANIFEST.OLD/d" $GENERATE_FILE
+sed -i -e "/^MANIFEST.*.bak/d" $GENERATE_FILE
