@@ -131,3 +131,4 @@ sed -i -e "s/^.\///" $GENERATE_FILE
 sed -i -e "/^.svn/d" $GENERATE_FILE
 sed -i -e "/^MANIFEST.OLD/d" $GENERATE_FILE
 sed -i -e "/^MANIFEST.*.bak/d" $GENERATE_FILE
+sed -i -e "/^.git/d" $GENERATE_FILE
