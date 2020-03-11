@@ -121,9 +121,9 @@ echo -e "VERSION \n" >> $GENERATE_FILE
 
 #フォルダ以下のファイルのリスト表示
 if test $RECURSIVE_FLG -eq 1 ;then
-	find . -type f >> $GENERATE_FILE
+	find . -type f | sort >> $GENERATE_FILE
 else
-	ls -1 >> $GENERATE_FILE
+	ls -1 | sort >> $GENERATE_FILE
 fi
 
 #リスト結果の文字列の整形
