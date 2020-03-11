@@ -116,8 +116,8 @@ fi
 #fi
 
 #デフォルトの情報出力
-echo -e "PACKAGE " >> $GENERATE_FILE
-echo -e "VERSION \n" >> $GENERATE_FILE
+echo "PACKAGE " >> $GENERATE_FILE
+echo "VERSION \n" >> $GENERATE_FILE
 
 #フォルダ以下のファイルのリスト表示
 if test $RECURSIVE_FLG -eq 1 ;then
@@ -127,8 +127,9 @@ else
 fi
 
 #リスト結果の文字列の整形
-sed -i -e "s/^.\///" $GENERATE_FILE
-sed -i -e "/^.svn/d" $GENERATE_FILE
-sed -i -e "/^MANIFEST.OLD/d" $GENERATE_FILE
-sed -i -e "/^MANIFEST.*.bak/d" $GENERATE_FILE
-sed -i -e "/^.git/d" $GENERATE_FILE
+sed -i".org" -e "s/^.\///" $GENERATE_FILE
+sed -i".org" -e "/^.svn/d" $GENERATE_FILE
+sed -i".org" -e "/^MANIFEST.OLD/d" $GENERATE_FILE
+sed -i".org" -e "/^MANIFEST.*.bak/d" $GENERATE_FILE
+sed -i".org" -e "/^.git/d" $GENERATE_FILE
+rm $GENERATE_FILE.org
