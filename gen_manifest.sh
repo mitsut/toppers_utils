@@ -3,7 +3,7 @@
 # 
 # MANIFESTFILE generator
 #
-# Copyright (C) 2017 by Mitsutaka Takada
+# Copyright (C) 2017-2020 by Mitsutaka Takada
 #
 # The above copyright holders grant permission gratis to use,
 # duplicate, modify, or redistribute (hereafter called use) this
@@ -121,7 +121,7 @@ echo -e "VERSION \n" >> $GENERATE_FILE
 
 #フォルダ以下のファイルのリスト表示
 if test $RECURSIVE_FLG -eq 1 ;then
-	find . >> $GENERATE_FILE
+	find . -type f >> $GENERATE_FILE
 else
 	ls -1 >> $GENERATE_FILE
 fi
