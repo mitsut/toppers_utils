@@ -92,17 +92,8 @@ do
 	'-R' )
 		RECURSIVE_FLG=0
 		;;
-	*)
-	# コマンド引数（オプション以外のパラメータ）
-		if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
-		param+=( "$1" )
-		shift 1
-		fi
-		;;
 	esac
 done
-
-# 以下，実行本体
 
 #既にMANIFESTが存在する場合は既存のファイルをMANIFEST.OLDに置き換える
 if [ -e $GENERATE_FILE ]; then
@@ -133,6 +124,8 @@ sed -i".org" -e "/^MANIFEST.OLD/d" $GENERATE_FILE
 sed -i".org" -e "/^MANIFEST.*.bak/d" $GENERATE_FILE
 sed -i".org" -e "/^.git/d" $GENERATE_FILE
 sed -i".org" -e "/^RELEASE/d" $GENERATE_FILE
+sed -i".org" -e "/.a$/d" $GENERATE_FILE
+sed -i".org" -e "/.o$/d" $GENERATE_FILE
 sed -i".org" -e "s/(/\\\(/g" $GENERATE_FILE
 sed -i".org" -e "s/)/\\\)/g" $GENERATE_FILE
 sed -i".org" -e "s/ /\\\ /g" $GENERATE_FILE
