@@ -154,13 +154,8 @@ if (! -d "RELEASE") {
 	mkdir("RELEASE");
 }
 
-$archive_name_tgz = $package."-".$version.".tar.gz";
-$archive_name_zip = $package."-".$version.".zip";
+$archive_name = $package."-".$version.".tar.gz";
 $file_list = join(" ", @file_list);
-$command = "tar cvfz RELEASE/$archive_name_tgz -C .. $file_list\n";
+$command = "tar cvfz RELEASE/$archive_name -C .. $file_list\n";
 die if (system($command));
-print STDERR "== RELEASE/$archive_name_tgz is generated. ==\n";
-
-$command2 = "zip -r RELEASE/$archive_name_zip -j RELEASE/$archive_name_tgz";
-die if (system($command2));
-print STDERR "== RELEASE/$archive_name_zip is generated. ==\n";
+print STDERR "== RELEASE/$archive_name is generated. ==\n";
