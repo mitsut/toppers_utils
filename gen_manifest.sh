@@ -3,7 +3,7 @@
 # 
 # MANIFESTFILE generator
 #
-# Copyright (C) 2017-2020 by Mitsutaka Takada
+# Copyright (C) 2017-2023 by Mitsutaka Takada
 #
 # The above copyright holders grant permission gratis to use,
 # duplicate, modify, or redistribute (hereafter called use) this
@@ -124,8 +124,8 @@ sed -i".org" -e "/^MANIFEST.OLD/d" $GENERATE_FILE
 sed -i".org" -e "/^MANIFEST.*.bak/d" $GENERATE_FILE
 sed -i".org" -e "/^.git/d" $GENERATE_FILE
 sed -i".org" -e "/^RELEASE/d" $GENERATE_FILE
-sed -i".org" -e "/.a$/d" $GENERATE_FILE
-sed -i".org" -e "/.o$/d" $GENERATE_FILE
+sed -i".org" -e "/\.a$/d" $GENERATE_FILE
+sed -i".org" -e "/\.o$/d" $GENERATE_FILE
 sed -i".org" -e "s/(/\\\(/g" $GENERATE_FILE
 sed -i".org" -e "s/)/\\\)/g" $GENERATE_FILE
 sed -i".org" -e "s/ /\\\ /g" $GENERATE_FILE
