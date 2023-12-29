@@ -159,3 +159,9 @@ $file_list = join(" ", @file_list);
 $command = "tar cvfz RELEASE/$archive_name -C .. $file_list\n";
 die if (system($command));
 print STDERR "== RELEASE/$archive_name is generated. ==\n";
+
+# tar.gzをzipに置き換えたい場合は次のコマンドを実行する
+#
+# tar xvzf RELEASE/<PACKAGE-NAME>-<VERSION>.tar.gz -C RELEASE/
+# cd RELEASE/
+# zip -r <PACKAGE-NAME>-<VERSION>.zip <PACKAGE-NAME>
