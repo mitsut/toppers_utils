@@ -118,11 +118,11 @@ else
 fi
 
 #リスト結果の文字列の整形
-sed -i".org" -e "s/^.\///" $GENERATE_FILE
-sed -i".org" -e "/^.svn/d" $GENERATE_FILE
+sed -i".org" -e "s/^\.\///" $GENERATE_FILE
+sed -i".org" -e "/.svn/d" $GENERATE_FILE
 sed -i".org" -e "/^MANIFEST.OLD/d" $GENERATE_FILE
 sed -i".org" -e "/^MANIFEST.*.bak/d" $GENERATE_FILE
-sed -i".org" -e "/^.git/d" $GENERATE_FILE
+sed -i".org" -e "/.git/d" $GENERATE_FILE
 sed -i".org" -e "/^RELEASE/d" $GENERATE_FILE
 sed -i".org" -e "/\.a$/d" $GENERATE_FILE
 sed -i".org" -e "/\.o$/d" $GENERATE_FILE
@@ -130,4 +130,5 @@ sed -i".org" -e "s/(/\\\(/g" $GENERATE_FILE
 sed -i".org" -e "s/)/\\\)/g" $GENERATE_FILE
 sed -i".org" -e "s/ /\\\ /g" $GENERATE_FILE
 sed -i".org" -e "s/&/\\\&/g" $GENERATE_FILE
+sed -i".org" -e "/CMakeFiles/d" $GENERATE_FILE
 rm $GENERATE_FILE.org
