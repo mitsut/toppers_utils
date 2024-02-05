@@ -3,7 +3,7 @@
 # 
 # MANIFESTFILE generator
 #
-# Copyright (C) 2017-2020 by Mitsutaka Takada
+# Copyright (C) 2017-2024 by Mitsutaka Takada
 #
 # The above copyright holders grant permission gratis to use,
 # duplicate, modify, or redistribute (hereafter called use) this
@@ -63,7 +63,8 @@ RECURSIVE_FLG=1
 GENERATE_FILE="MANIFEST"
 
 PROGNAME=$(basename $0)
-VERSION="1.0"
+VERSION="1.0.0"
+FOLDER_NAME=$(basename "$(pwd)")
 
 # ヘルプメッセージ
 usage() {
@@ -107,8 +108,9 @@ fi
 #fi
 
 #デフォルトの情報出力
-echo "PACKAGE " >> $GENERATE_FILE
-echo "VERSION \n" >> $GENERATE_FILE
+echo "PACKAGE $FOLDER_NAME" >> $GENERATE_FILE
+echo "VERSION $VERSION" >> $GENERATE_FILE
+echo "" >> $GENERATE_FILE
 
 #フォルダ以下のファイルのリスト表示
 if test $RECURSIVE_FLG -eq 1 ;then
@@ -124,10 +126,10 @@ sed -i".org" -e "/^MANIFEST.OLD/d" $GENERATE_FILE
 sed -i".org" -e "/^MANIFEST.*.bak/d" $GENERATE_FILE
 sed -i".org" -e "/^.git/d" $GENERATE_FILE
 sed -i".org" -e "/^RELEASE/d" $GENERATE_FILE
-sed -i".org" -e "/.a$/d" $GENERATE_FILE
-sed -i".org" -e "/.o$/d" $GENERATE_FILE
+sed -i".org" -e "/\.a$/d" $GENERATE_FILE
+sed -i".org" -e "/\.o$/d" $GENERATE_FILE
 sed -i".org" -e "s/(/\\\(/g" $GENERATE_FILE
 sed -i".org" -e "s/)/\\\)/g" $GENERATE_FILE
 sed -i".org" -e "s/ /\\\ /g" $GENERATE_FILE
 sed -i".org" -e "s/&/\\\&/g" $GENERATE_FILE
-rm $GENERATE_FILE.org
+rm $GENERATE_FILE.OLD
